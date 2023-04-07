@@ -1,0 +1,40 @@
+{
+  "name": "shopping-react-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
+    "@tanstack/react-query": "^4.26.1",
+    "@types/react-redux": "^7.1.25",
+    "axios": "^1.3.4",
+    "firebase": "^9.19.1",
+    "hamburger-react": "^2.5.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.2",
+    "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^9.1.2",
+    "redux-persist": "^6.0.0",
+    "zod": "^3.21.4",
+    "zustand": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.1",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7"
+  }
+}
