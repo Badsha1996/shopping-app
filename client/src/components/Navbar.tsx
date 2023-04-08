@@ -12,11 +12,11 @@ import {
 } from "firebase/auth"
 import { login, logout } from "../redux/shoppingSlice"
 
-import { ToastContainer,toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Navbar() {
     // const store = useStore()
-    const dispatch:any = useAppDispatch()
+    const dispatch: any = useAppDispatch()
     const items = useAppSelector((state) => state.items)
     const user = useAppSelector((state) => state.userInfo)
 
@@ -39,13 +39,13 @@ export default function Navbar() {
             .catch((err) => console.log(err))
     }
 
-    const handleLogout = (e:React.MouseEvent<HTMLElement>) =>{
+    const handleLogout = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault()
         signOut(auth).then(() => {
             dispatch(logout()) & toast.success(`Singing out`) as any
-          }).catch((error) => {
+        }).catch((error) => {
             console.log(error)
-          });
+        });
     }
     return (
         <div className="sticky z-50 top-0 h-20 bg-white border-b-[0.05rem] border-gray-700 ">
@@ -73,14 +73,14 @@ export default function Navbar() {
 
                     <ul className={` hidden w-full
                 mt-36   md:mt-auto   md:flex items-center gap-8 md:bg-white`}>
-                        {user && (<li onClick={(e) => handleLogout(e)} className=" text-base text-white outline-none bg-red-600 rounded-md px-2 py-1 hover:bg-transparent hover:text-black hover:outline hover:outline-[0.1rem] hover:outline-black
+                        {user && (<li onClick={(e) => handleLogout(e)} className=" text-base duration-300 transition ease-in-out text-white outline-none bg-red-600 rounded-md px-2 py-1 hover:bg-transparent hover:text-black hover:outline hover:outline-[0.1rem] hover:outline-black
                         decoration-[0.1rem] 
                         cursor-pointer focus-visible:none focus:outline-slate-600">Logout</li>)}
-                    {
-                        user===null && (<li onClick={(e) => handleLogin(e)} className=" text-base hover:text-white hover:outline-none hover:bg-red-600 rounded-md px-2 py-1 bg-transparent text-black outline outline-[0.1rem] outline-black
+                        {
+                            user === null && (<li onClick={(e) => handleLogin(e)} className=" text-base duration-75 hover:duration-300 hover:transition hover:ease-in-out hover:text-white hover:outline-none hover:bg-red-600 rounded-md px-2 py-1 bg-transparent text-black outline outline-[0.1rem] outline-black
                         decoration-[0.1rem] 
                         cursor-pointer focus-visible:none focus:outline-slate-600 ">Login</li>)
-                    }
+                        }
                         <li className=" text-base text-black font-bold hover:text-white md:hover:text-red-600
                     hover:underline underline-offset-2 decoration-[0.1rem] 
                     cursor-pointer">Home</li>
@@ -109,30 +109,29 @@ export default function Navbar() {
             </div>
 
 
-            <div className={`${isOpen == false ? 'translate-y-[50rem]' : 'translate-y-[0rem]'} h-[81vh] w-full top-[0rem] z-20  md:hidden  relative  transition-transform duration-500 flex items-center
+            <div className={`${isOpen == false ? 'translate-y-[-50rem]' : 'translate-y-[0rem]'} h-[81vh] w-full top-[0rem] z-20  md:hidden  relative  transition-transform duration-500 flex items-center
             justify-center
-            bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900
+            bg-gradient-to-r from-red-700 via-red-600 to-red-700
             
             `}>
-                <img src={Hero} alt="navbar image" className=" clip-path w-full z-10  h-full absolute opacity-[0.8]" />
 
 
                 <div className="w-full flex gap-2 items-center justify-center ml-2 z-30">
                     <ul className=" flex flex-col items-end gap-14 ">
 
-                        <li className="border-white/20 bg-gray-400/20  border border-t-0 border-l-0 border-r-0 py-4 px-16 
+                        <li className="border-white/20 cursor-pointer  bg-gray-400/20  border border-t-0 border-l-0 border-r-0 py-4 px-16 
                         text-white
                         hover:bg-white 
                         hover:text-black
                         hover:border-gray-400 duration-500 font-semibold">Home</li>
-                        <li className="border-white/20 border  border-t-0 border-l-0 border-r-0 py-4 px-16  text-white
+                        <li className="border-white/20 border  cursor-pointer border-t-0 border-l-0 border-r-0 py-4 px-16  text-white
                         hover:bg-white 
                         hover:text-black hover:border-gray-400 duration-500 font-semibold">Blog</li>
-                        <li className="border-white/20 border border-t-0 border-l-0 border-r-0 py-4 px-16  text-white
+                        <li className="border-white/20 cursor-pointer border border-t-0 border-l-0 border-r-0 py-4 px-16  text-white
                         hover:bg-white 
                         hover:text-black
                         hover:border-gray-400 duration-500 font-semibold">Cloths</li>
-                        <li className="border-white/20 border border-t-0 border-l-0 border-r-0 py-4 px-16  text-white
+                        <li className="border-white/20 cursor-pointer border border-t-0 border-l-0 border-r-0 py-4 px-16  text-white
                         hover:bg-white 
                         hover:text-black
                         hover:border-gray-400 duration-500 font-semibold">Shop</li>
@@ -140,16 +139,16 @@ export default function Navbar() {
                 </div>
             </div>
             <ToastContainer
-            position="top-left"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop = {false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
+                position="top-left"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
             />
         </div>
     )
