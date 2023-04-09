@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/assets/images.ts</title>
+    <title>Code coverage report for src/redux/Store.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/assets</a> images.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/redux</a> Store.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -32,14 +32,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -117,34 +117,34 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span></td><td class="text"><pre class="prettyprint lang-js">import ShopLogo from "./shopLogo.png"
-import CartLogo from "./cartLogo.png"
-import PaymentLogo from "./paymentLogo.png"
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import shoppingReducer from "./shoppingSlice"
+import { persistStore, persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER, } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 &nbsp;
-import slide1 from "./slider1.jpg"
-import slide2 from "./slider2.jpg"
-import slide3 from "./slider3.jpg"
-import slide4 from "./slider4.jpg"
-import slide5 from "./slider5.jpg"
-&nbsp;
-import Hero from "./Hero.gif"
-import CartHero from "./cartImage.jpg"
-&nbsp;
-export {
-    ShopLogo,
-    CartLogo,
-    PaymentLogo,
-    Hero,
-<span class="fstat-no" title="function not covered" >    CartHero</span>
+const persistConfig = {
+  key: 'root',
+  storage
 }
 &nbsp;
-export const SliderImageArray = [
-    slide1,
-    slide2,
-    slide3,
-    slide4,
-    slide5
-]</pre></td></tr></table></pre>
+const persistedReducer = persistReducer(persistConfig, shoppingReducer)
+&nbsp;
+export const store = configureStore({reducer:persistedReducer,middleware: (getDefaultMiddleware) =&gt;
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),})
+export let persistor = persistStore(store<span class="fstat-no" title="function not covered" >)</span>
+&nbsp;
+export type RootState = ReturnType&lt;typeof store.getState&gt;
+export type AppDispatch = typeof store.dispatch</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
